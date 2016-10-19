@@ -11,16 +11,20 @@
      <link rel="stylesheet" href="css/index.css" />
 
 
-     <form class="center">
+     <form class="center login" method="POST" onsubmit="login()">
        <label>
          Username:
-         <input name="username" type="text" placeholder="Username" required/>
+         <br />
+         <input name="username" type="text" class="round-corners input" placeholder="Username" required/>
        </label>
        <br />
        <label>
          Password:
-         <input name="password" type="password" placeholder="Password" required/>
+         <br />
+         <input name="password" type="password" class="round-corners input" placeholder="Password" required/>
        </label>
+       <br />
+       <input name="submit" type="submit" class="round-corners" />
     </form>
 
     <script type="text/javascript" src="javascript/index.js"></script>
