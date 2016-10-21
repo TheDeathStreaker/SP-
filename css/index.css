@@ -1,3 +1,7 @@
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
 .error {
   color: red;
   margin-top: 35vh;
@@ -16,6 +20,8 @@
 input[type='text'],
 input[type='password'] {
   border-radius: 10px;
+  border-width: 1px;
+  border-color: #429bf4;
   width: 30%;
   height: 25px;
   margin-bottom: 5px;
@@ -24,6 +30,10 @@ input[type='password'] {
 input[type='submit'] {
   border-radius: 25px;
   height: 25px;
+  width: 100px;
+  font-weight: bold;
+  background-color: #429bf4;
+  border: none;
 }
 
 .login {
