@@ -1,6 +1,6 @@
 .error {
   color: red;
-  margin-top: 40vh;
+  margin-top: 35vh;
   height: 25px;
 }
 
@@ -28,4 +28,25 @@ input[type='submit'] {
 
 .login {
   width: 100%;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  color: #429bf4;
+  font-size: 50px;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.header h1 > span {
+  color: #f44253;
+}
+
+.header img {
+  float: left;
+  max-height: 200px;
+  max-width: 400px;
 }
