@@ -3,7 +3,7 @@ body {
 }
 
 .error {
-  color: red;
+  color: #f44253;
   margin-top: 35vh;
   height: 25px;
 }
@@ -24,16 +24,22 @@ input[type='password'] {
   border-color: #429bf4;
   width: 30%;
   height: 25px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
-input[type='submit'] {
-  border-radius: 25px;
-  height: 25px;
-  width: 100px;
-  font-weight: bold;
-  background-color: #429bf4;
+.submit {
   border: none;
+  background: #429bf4;
+  padding: 5.5px 30px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.submit:hover {
+  color: #fff;
 }
 
 .login {

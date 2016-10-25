@@ -24,7 +24,7 @@ var users = [
 var login = function () {
   var uname = document.forms['loginForm']['username'].value;
   var pass = document.forms['loginForm']['password'].value;
-  console.log(document.getElementById('submit'));
+  var link = document.getElementById('submit');
 
   var error = document.getElementsByClassName('error');
 
@@ -33,18 +33,17 @@ var login = function () {
       if (pass === users[i].password) {
         switch (users[i].role){
           case 'professor':
-            document.getElementById('submit').href = 'professor.html';
+            link.href = 'professor.html';
             break;
           case 'referat':
-            document.getElementById('submit').href = 'referat.html';
+            link.href = 'referat.html';
             break;
           case 'student':
-            document.getElementById('submit').href = 'student.html';
+            link.href = 'student.html';
             break;
           default:
-            document.getElementById('submit').href = 'student.html';
+            link.href = 'student.html';
         }
-        return false;
       } else {
         error[0].innerHTML = '<p>You entered wrong password</p>';
 
