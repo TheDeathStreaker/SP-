@@ -32,16 +32,16 @@ var login = function () {
       if (pass === users[i].password) {
         switch (users[i].role){
           case 'professor':
-            document.forms['loginForm'].action = 'html/professor.html'
+            document.forms['loginForm'].action = 'professor.html'
             break;
           case 'referat':
-            document.forms['loginForm'].action = 'html/referat.html'
+            document.forms['loginForm'].action = 'referat.html'
             break;
           case 'student':
-            document.forms['loginForm'].action = 'html/student.html'
+            document.forms['loginForm'].action = 'student.html'
             break;
           default:
-            document.forms['loginForm'].action = 'html/student.html'
+            document.forms['loginForm'].action = 'student.html'
         }
         return true;
       } else {
