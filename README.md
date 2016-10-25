@@ -6,4 +6,4 @@
 
 ## Wireframes ##
 ### Landing page ###
-![landing page](/docs/wireframes/landing_page.pdf)
+![Landing page](/docs/wireframes/landing_page.pdf?raw=true)
