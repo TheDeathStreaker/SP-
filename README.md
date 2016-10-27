@@ -4,7 +4,7 @@
 
 ## Wireframes
 1. Landing page:
-  ![Landing page](docs/wireframes/png/landing_page.png?raw=true)
+  ![Landing page](docs/wireframes/png/landing_page.png)
 2. First page: <br />
   2.1. Student:
     ![First page student](docs/wireframes/png/first_page_stud.png)
