@@ -1,6 +1,16 @@
-# Projekt pri predmetu Spletno programiranje #
+# Project for class Web Programming #
 
-## Izbrana tema [e-Študent](https://ucilnica.fri.uni-lj.si/mod/page/view.php?id=1436#eStudent) ##
+## Chosen theme [e-Študent](https://ucilnica.fri.uni-lj.si/mod/page/view.php?id=1436#eStudent) ##
+
+## What is e-Študent ##
+It's web application that replaces physical indeks (book with grades of faculty) and therefore make life of students/professors/employees of the faculty easier.
+It's also more ecological since it removes the need of using a lot of paper to create indeks.
+
+## Who can use this application ##
+Students and employees of faculty
+
+## What devices will be supported ##
+Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop browsers (Chrome, Safari, Firefox)
 
 ## Wireframes
 1. Landing page:
