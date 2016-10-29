@@ -14,6 +14,7 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
 
 ## Sitemaps ##
 1. Student:
+  ![Sitemap student](docs/png/sitemap_student.png)
 2. Professor:
 3. Referat:
 
