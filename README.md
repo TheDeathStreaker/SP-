@@ -12,6 +12,9 @@ Students and employees of faculty
 ## What devices will be supported ##
 Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop browsers (Chrome, Safari, Firefox)
 
+## Usecase scenario ##
+![Usecase](docs/png/usecase.png)
+
 ## Sitemaps ##
 1. Student:
   ![Sitemap student](docs/png/sitemap_student.png)
