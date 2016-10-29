@@ -29,7 +29,7 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
     ![First page referat](docs/wireframes/png/first_page_refe.png)
 3. Additional pages: <br />
   3.1. Student registration/unregistration for exam:
-    ![Student registration to exam](docs\wireframes\png\student_registration-unregistration_exam.png)
+    ![Student registration to exam](docs/wireframes/png/student_registration-unregistration_exam.png)
   3.2. Student requests:
     ![Student requests](docs/wireframes/png/student_requests.png)
   3.3. Student specific request:
