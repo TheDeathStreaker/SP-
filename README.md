@@ -16,7 +16,9 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
 1. Student:
   ![Sitemap student](docs/png/sitemap_student.png)
 2. Professor:
+  ![Sitemap professor](docs/png/sitemap_professor.png)
 3. Referat:
+  ![Sitemap referat](docs/png/sitemap_referat.png)
 
 ## Wireframes ##
 1. Landing page:
