@@ -15,7 +15,7 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
 ## Sitemaps ##
 1. Student:
 2. Professor:
-3. Referat: 
+3. Referat:
 
 ## Wireframes ##
 1. Landing page:
@@ -27,9 +27,9 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
     ![First page professor](docs/wireframes/png/first_page_prof.png)
   2.3. Referat:
     ![First page referat](docs/wireframes/png/first_page_refe.png)
-3. Additional pages:
+3. Additional pages: <br />
   3.1. Student registration/unregistration for exam:
-    ![Student registration to exam](docs/wireframes/png/student_refistration-unregistration_exam.png)
+    ![Student registration to exam](docs\wireframes\png\student_registration-unregistration_exam.png)
   3.2. Student requests:
     ![Student requests](docs/wireframes/png/student_requests.png)
   3.3. Student specific request:
