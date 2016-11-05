@@ -1,19 +1,45 @@
 .navbar {
-  height: calc(100vh - 208px);
+  height: calc(100vh - 209px);
   width: 15vw;
   border-right: 1px solid #b0b8c4;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .navbar ul {
+  width: 100%;
   list-style-type: none;
+  text-overflow: ellipsis;
+  padding: 0px;
+}
+
+.navbar ul > li {
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.navbar ul > li  a {
+  width: 100%;
+  text-overflow: ellipsis;
 }
 
 .general {
-  height: calc(100vh - 220px);
+  height: calc(100vh - 261px);
   width: 82vw;
-  border-top: 1px solid #b0b8c4;
+  overflow: auto;
 }
 
 .general > div:not(:last-child) {
-  border-bottom: border-top: 1px solid #b0b8c4;
+  border-bottom: 1px solid #b0b8c4;
+}
+
+.referat {
+  height: 30%;
+  overflow: auto;
+}
+
+.professor {
+  max-height: 25%;
+  width: 100%;
+  overflow: auto;
 }

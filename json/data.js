@@ -14,7 +14,8 @@ var users = [
         'id': 2
       }
     ],
-    'requests': [];
+    'requests': [],
+    'orders': []
   },
   {
     'id': 2,
@@ -22,7 +23,14 @@ var users = [
     'name': 'Janez Novak',
     'password': 'novak4321',
     'role': 'professor',
-    'holding': [1,2]
+    'holding': [
+      {
+        'id': 1
+      },
+      {
+        'id': 2
+      }
+    ]
   },
   {
     'id': 3,
@@ -40,6 +48,11 @@ var classes = [
     'exams':[
       '12.2.2017 10.00',
       '26.2.2017 10.00'
+    ],
+    'enrolled': [
+      {
+        'id': 1
+      }
     ]
   },
   {
@@ -47,6 +60,11 @@ var classes = [
     'name': 'Something',
     'exams': [
       '14.2.2017 10.00'
+    ],
+    'enrolled': [
+      {
+        'id': 1
+      }
     ]
   }
 ];

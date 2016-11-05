@@ -16,6 +16,8 @@ body {
   height: 200px;
   text-align: center;
   text-overflow: clip;
+  border-bottom: 1px solid #b0b8c4;
+  overflow: hidden;
 }
 
 .header h1 {
@@ -42,4 +44,14 @@ body {
 
 .left {
   float: left;
+}
+
+.spacer {
+  display: inline-block;
+  padding-left: 30px;
+}
+
+.bigSpacer {
+  display: inline-block;
+  padding-left: 40%;
 }
