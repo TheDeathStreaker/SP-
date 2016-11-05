@@ -8,7 +8,7 @@ var users = [
     'enrolled': [
       {
         'id': 1,
-        'grade': 6
+        'mark': 6
       },
       {
         'id': 2

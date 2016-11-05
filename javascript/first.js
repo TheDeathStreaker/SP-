@@ -72,6 +72,11 @@ function getOptions(role) {
   return options;
 }
 
+function updateOptions(role) {
+  var dd = document.forms['addClass']['classProfessor'];
+  dd.innerHTML = getOptions(role);
+}
+
 function getClasses () {
   var cls = '';
   if(user.classes) {
@@ -79,20 +84,34 @@ function getClasses () {
       for (var j = 0; j < classes.length; j++) {
         if (user.classes[i].id === classes[j].id) {
           if (user.role === 'professor') {
-            cls += '<div class="professor">'
-            cls += '<h4>' + classes[j].name + '</h4>';
-            cls += '<p>Students: ' + classes[j].enrolled.length + '</p>';
+            cls += '<div class="professor">';
+            cls += '<table class="fullWidth">';
+            cls += '<tr>';
+            cls += '<td width="80%"><h4>' + classes[j].name + '</h4></td>';
+            cls += '<td width="10%"><p>' + classes[j].enrolled.length + '</p></td>';
+            cls += '<td width="10%">';
             for (var k = 0; k < classes[j].exams.length; k++){
               cls += '<small>&emsp;' + classes[j].exams[k] + '</small><br />';
             }
-            cls += '</div>'
+            cls += '</td>';
+            cls += '</tr>';
+            cls += '</table>';
+            cls += '</div>';
           } else {
+            var mark = user.classes[i].mark ? user.classes[i].mark : '';
             cls += '<div class="student">'
-            cls += '<h4>' + classes[j].name + '</h4>';
-            cls += '<p>Mark: </p>';
+            cls += '<table class="fullWidth">';
+            cls += '<tr>';
+            cls += '<td width="80%"><h4>' + classes[j].name + '</h4>';
+            cls += '<small><u>Exam dates:</u></small><br />';
             for (var k = 0; k < classes[j].exams.length; k++){
               cls += '<small>&emsp;' + classes[j].exams[k] + '</small><br />';
             }
+            cls += '</td>';
+            cls += '<td width="10%"><p>' + mark + '</p></td>';
+            cls += '</td>';
+            cls += '</tr>';
+            cls += '</table>';
             cls += '</div>'
           }
         }
@@ -157,11 +176,29 @@ function getGeneral  () {
       layout += '</div>';
     break;
     case 'professor':
-      layout = getClasses();
+      layout = '<div class="professor">';
+      layout += '<table class="fullWidth">';
+      layout += '<tr>';
+      layout += '<th width="80%">Class name</th>';
+      layout += '<th width="10%">Students</th>';
+      layout += '<th width="10%">Exam dates</th>';
+      layout += '</tr>';
+      layout += '</table>';
+      layout += '</div>';
+
+      layout += getClasses();
     break;
     default:
-      layout = getClasses();
+      layout = '<div class="student">';
+      layout += '<table class="fullWidth">';
+      layout += '<tr>';
+      layout += '<th width="90%">Class name</th>';
+      layout += '<th width="10%">Mark</th>';
+      layout += '</tr>';
+      layout += '</table>';
+      layout += '</div>';
 
+      layout += getClasses();
   }
 
   return layout;
@@ -189,4 +226,75 @@ var getData = function () {
   document.getElementById('person').innerHTML = '<p>Hello ' + user.name + '</p>';
   document.getElementById('general').innerHTML = getGeneral();
   document.getElementById('navbar').innerHTML = navbar;
+}
+
+var add = function(what) {
+  var firstName, lastName;
+  switch (what) {
+    case 'professor':
+      firstName = document.forms['addProfessor']['firstName'].value;
+      lastName = document.forms['addProfessor']['lastName'].value;
+
+      users.push({
+        'id': users.length + 1,
+        'name': firstName + ' ' + lastName,
+        'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
+        'password': lastName.toLowerCase() + '4321',
+        'role': what,
+        'holding': []
+      });
+
+      updateOptions(what);
+
+      document.forms['addProfessor']['lastName'].value = '';
+      document.forms['addProfessor']['firstName'].value = '';
+    break;
+    case 'student':
+    firstName = document.forms['addStudent']['firstName'].value;
+    lastName = document.forms['addStudent']['lastName'].value;
+
+    users.push({
+      'id': users.length + 1,
+      'name': firstName + ' ' + lastName,
+      'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
+      'password': firstName.toLowerCase() + '1234',
+      'role': what,
+      'enrolled': [],
+      'requests': [],
+      'orders': []
+    });
+
+    document.forms['addStudent']['lastName'].value = '';
+    document.forms['addStudent']['firstName'].value = '';
+    break;
+    case 'class':
+    firstName = document.forms['addClass']['className'].value;
+    lastName = document.forms['addClass']['classProfessor'].value;
+
+    var classID = classes.length + 1;
+    classes.push({
+      'id': classID,
+      'name': firstName,
+      'exams': [],
+      'enrolled': []
+    });
+
+    if (lastName) {
+      console.log(lastName);
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].id.toString() === lastName) {
+          users[i].holding.push({
+            'id': classID
+          });
+          break;
+        }
+      }
+    }
+
+    document.forms['addClass']['className'].value = '';
+    document.forms['addClass']['classProfessor'].value = '';
+    break;
+    default:
+      console.error('Unrecognized add');
+  }
 }

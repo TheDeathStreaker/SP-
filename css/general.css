@@ -55,3 +55,8 @@ body {
   display: inline-block;
   padding-left: 40%;
 }
+
+.fullWidth {
+  width: 100%;
+  text-align: left;
+}

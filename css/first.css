@@ -43,3 +43,9 @@
   width: 100%;
   overflow: auto;
 }
+
+.student {
+  max-height: 30%;
+  width: 100%;
+  overflow: auto;
+}
