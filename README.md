@@ -40,3 +40,8 @@ Mobile devices(Android smartphones/tablets, iOS smartphones/tablets) and desktop
     ![Student requests](docs/wireframes/png/student_requests.png)
   3.3. Student specific request:
     ![Student request](docs/wireframes/png/student_request.png)
+
+[//]: # (Login data:)
+[//]: # (Student: {Username: adrianj, Password: adrian1234})
+[//]: # (Professor: {Username: janezn, Password: novak4321})
+[//]: # (Referat: {Username: metak, Password: metkriz12})
