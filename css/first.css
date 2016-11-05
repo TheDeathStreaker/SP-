@@ -1,0 +1,19 @@
+.navbar {
+  height: calc(100vh - 208px);
+  width: 15vw;
+  border-right: 1px solid #b0b8c4;
+}
+
+.navbar ul {
+  list-style-type: none;
+}
+
+.general {
+  height: calc(100vh - 220px);
+  width: 82vw;
+  border-top: 1px solid #b0b8c4;
+}
+
+.general > div:not(:last-child) {
+  border-bottom: border-top: 1px solid #b0b8c4;
+}
