@@ -1,0 +1,28 @@
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.center label {
+  font-weight: bold;
+}
+
+.header {
+  height: 200px;
+}
+
+.header h1 {
+  color: #429bf4;
+  font-size: 50px;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.header h1 > span {
+  color: #f44253;
+}
+
+.header img {
+  float: left;
+  max-height: 200px;
+  max-width: 400px;
+}

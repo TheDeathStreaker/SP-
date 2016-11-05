@@ -14,16 +14,16 @@ var login = function () {
       if (pass === users[i].password) {
         switch (users[i].role){
           case 'professor':
-            link.href = 'professor.html';
+            link.href = 'professor.html?uname=' + users[i].username;
             break;
           case 'referat':
-            link.href = 'referat.html';
+            link.href = 'referat.html?uname=' + users[i].username;
             break;
           case 'student':
-            link.href = 'student.html';
+            link.href = 'student.html?uname=' + users[i].username;
             break;
           default:
-            link.href = 'student.html';
+            link.href = 'student.html?uname=' + users[i].username;
         }
       } else {
         error[0].innerHTML = '<p>You entered wrong password</p>';
