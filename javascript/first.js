@@ -72,9 +72,9 @@ function getOptions(role) {
   return options;
 }
 
-function updateOptions(role) {
+function updateOptions(user) {
   var dd = document.forms['addClass']['classProfessor'];
-  dd.innerHTML = getOptions(role);
+  dd.innerHTML += '<option value="' + user.id + '">' + user.name + '</option>';
 }
 
 function getClasses () {
@@ -235,8 +235,10 @@ var add = function(what) {
       firstName = document.forms['addProfessor']['firstName'].value;
       lastName = document.forms['addProfessor']['lastName'].value;
 
+      var userID = users.length + 1;
+
       users.push({
-        'id': users.length + 1,
+        'id': userID,
         'name': firstName + ' ' + lastName,
         'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
         'password': lastName.toLowerCase() + '4321',
@@ -244,7 +246,11 @@ var add = function(what) {
         'holding': []
       });
 
-      updateOptions(what);
+      updateOptions({
+        'name': firstName + ' ' + lastName,
+        'id': userID,
+        'role': what
+      });
 
       document.forms['addProfessor']['lastName'].value = '';
       document.forms['addProfessor']['firstName'].value = '';
@@ -280,7 +286,6 @@ var add = function(what) {
     });
 
     if (lastName) {
-      console.log(lastName);
       for (var i = 0; i < users.length; i++) {
         if (users[i].id.toString() === lastName) {
           users[i].holding.push({
