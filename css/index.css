@@ -1,17 +1,8 @@
 .error {
   color: #f44253;
-  margin-top: 25vh;
   height: 25px;
-}
-
-input[type='text'],
-input[type='password'] {
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #429bf4;
+  margin: 25vh auto 0px auto;
   width: 30%;
-  height: 25px;
-  margin-bottom: 20px;
 }
 
 .submit {
@@ -30,5 +21,21 @@ input[type='password'] {
 }
 
 .login {
+  margin: 0px auto;
+  text-align: center;
+  width: 30%;
+}
+
+.login label {
+  font-weight: bold;
+}
+
+.login input[type='text'],
+.login input[type='password'] {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #429bf4;
   width: 100%;
+  height: 25px;
+  margin-bottom: 20px;
 }

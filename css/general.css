@@ -3,15 +3,6 @@ body {
   color: #3d4147;
 }
 
-.center label {
-  font-weight: bold;
-}
-
-.center {
-  text-align: center;
-  width: 100%;
-}
-
 .header {
   height: 200px;
   text-align: center;

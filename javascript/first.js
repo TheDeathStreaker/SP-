@@ -14,21 +14,6 @@ function getParameterByName (name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function getName (name) {
-  name = name.replace(/č/g, '&ccaron;');
-  name = name.replace(/š/g, '&scaron;');
-  name = name.replace(/ž/g, '&zcaron;');
-  name = name.replace(/ć/g, '&cacute;');
-  name = name.replace(/đ/g, '&dstrok;');
-  name = name.replace(/Č/g, '&Ccaron;');
-  name = name.replace(/Š/g, '&Scaron;');
-  name = name.replace(/Ž/g, '&Zcaron;');
-  name = name.replace(/Ć/g, '&Cacute;');
-  name = name.replace(/Đ/g, '&Dstrok;');
-
-  return name;
-}
-
 function getNavbar (role) {
   var nav = '';
   switch (role) {
@@ -73,8 +58,10 @@ function getOptions(role) {
 }
 
 function updateOptions(user) {
-  var dd = document.forms['addClass']['classProfessor'];
-  dd.innerHTML += '<option value="' + user.id + '">' + user.name + '</option>';
+  if(user.role === 'professor') {
+    var dd = document.forms['addClass']['classProfessor'];
+    dd.innerHTML += '<option value="' + user.id + '">' + user.name + '</option>';
+  }
 }
 
 function getClasses () {
@@ -211,11 +198,10 @@ var getData = function () {
   var navbar;
   for (var i = 0; i < users.length; i++) {
     if(users[i].username === uname) {
-      var name = getName(users[i].name);
       navbar = getNavbar(users[i].role);
       user = {
         'id': users[i].id,
-        'name': name,
+        'name': users[i].name,
         'role': users[i].role,
         'classes': users[i].enrolled ? users[i].enrolled : users[i].holding
       };
