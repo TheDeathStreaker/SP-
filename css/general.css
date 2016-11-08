@@ -4,7 +4,8 @@ body {
 }
 
 .header {
-  height: 200px;
+  height: 20vh;
+  max-height: 200px;
   text-align: center;
   text-overflow: clip;
   border-bottom: 1px solid #b0b8c4;
