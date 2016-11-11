@@ -3,26 +3,26 @@ function getNavbar () {
   switch (user.role) {
     case 'professor':
       nav = '<ul>' +
-              '<li><a onclick="loadClasses()">Classes</a></li>' +
-              '<li><a onclick="loadExams()">Exam dates</a></li>' +
+              '<li><a href="" onclick="loadClasses()">Classes</a></li>' +
+              '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
             '</ul>';
     break;
     case 'referat':
       nav = '<ul>' +
-              '<li><a onclick="loadStudents()">Students</a></li>' +
-              '<li><a onclick="loadProfessors()">Professors</a></li>' +
-              '<li><a onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
-              '<li><a onclick="loadRequests(\'' + user.role + '\')">Requests</a></li>' +
-              '<li><a onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
+              '<li><a href="" onclick="loadStudents()">Students</a></li>' +
+              '<li><a href="" onclick="loadProfessors()">Professors</a></li>' +
+              '<li><a href="" onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
+              '<li><a href="" onclick="loadRequests(\'' + user.role + '\')">Requests</a></li>' +
+              '<li><a href="" onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
             '</ul>';
     break;
     default:
       nav = '<ul>' +
-              '<li><a onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
-              '<li><a onclick="loadExams()">Exam dates</a></li>' +
+              '<li><a href="" onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
+              '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
               '<li><a href="student/requests.html">Requests</a></li>' +
-              '<li><a onclick="loadIndex()">Index</a></li>' +
-              '<li><a onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
+              '<li><a href="" onclick="loadIndex()">Index</a></li>' +
+              '<li><a href="" onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
             '</ul>';
   }
 
