@@ -69,7 +69,14 @@ var classes = [
   }
 ];
 
-var requests = [];
+var requests = [
+  {
+    'id': 1,
+    'name': 'Somthing',
+    'shortDescription': 'Somthing',
+    'description': 'Something longer'    
+  }
+];
 
 var studentRequests = [];
 

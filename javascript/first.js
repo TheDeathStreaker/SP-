@@ -175,6 +175,32 @@ function getFirst  () {
   return layout;
 }
 
+function getStudentRequests () {
+  var layout;
+  layout = '<div class="student">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="20%">Request name</th>';
+  layout += '<th width="80%">Request description</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < requests.length; i++) {
+    layout += '<div class="student">';
+    layout += '<table class="fullWidth">';
+    layout += '<tr>';
+    layout += '<th width="20%"><a onclick="loadStudentRequest(' + requests[i].id + ')">' +
+              requests[i].name + '</a></th>';
+    layout += '<td width="80%">' + requests[i].shortDescription + '</td>';
+    layout += '</tr>';
+    layout += '</table>';
+    layout += '</div>';
+  }
+
+  return layout;
+}
+
 var user;
 
 var getData = function (page) {
@@ -188,11 +214,17 @@ var getData = function (page) {
       document.getElementById('navbar').innerHTML = getNavbar();
     break;
     case 'requests':
-      document.getElementById('general').innerHTML = getRequests();
-      document.getElementById('navbar').innerHTML = getNavbar();
+      switch (user.role) {
+        case 'student':
+          document.getElementById('general').innerHTML = getStudentRequests();
+        break;
+        default:
+          document.getElementById('general').innerHTML = getStudentRequests();
+      }
     break;
     default:
-
+      document.getElementById('general').innerHTML = getFirst();
+      document.getElementById('navbar').innerHTML = getNavbar();
   }
 }
 
@@ -270,4 +302,9 @@ var add = function(what) {
     default:
       console.error('Unrecognized add');
   }
+}
+
+var loadStudentRequest = function (id) {
+  console.log(window.location);
+  window.location.href = 'request.html';
 }
