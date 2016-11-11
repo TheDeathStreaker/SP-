@@ -12,7 +12,15 @@ var login = function () {
     if (uname === users[i].username) {
       userFound = true;
       if (pass === users[i].password) {
-          link.href = 'first.html?uname=' + users[i].username;
+          link.href = 'first.html';
+          localStorage.setItem('user', JSON.stringify(
+            {
+              'id': users[i].id,
+              'name': users[i].name,
+              'role': users[i].role,
+              'classes': users[i].enrolled ? users[i].enrolled : users[i].holding
+            }
+          ));
       } else {
         error[0].innerHTML = '<p>You entered wrong password</p>';
       }

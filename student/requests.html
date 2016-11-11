@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title>e-&scaron;tudent - &scaron;tudent</title>
-   </head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>e-&Scaron;tudent</title>
+    <link href="../images/e.png" rel="shortcut icon" />
+ </head>
 
-   <body>
-     <link rel="stylesheet" href="../css/index.css" />
+ <body onload="getData();">
+   <link rel="stylesheet" href="../css/general.css" />
+   <link rel="stylesheet" href="../css/first.css" />
 
-     <div class="center">
-       <h1> POZDRAVLJEN ŠTUDENT </h1>
+   <header class="header">
+     <img src="../images/logo.png" alt="Logo e-Študent" />
+     <h1>
+       <span>e-</span>&Scaron;tudent
+     </h1>
+   </header>
+
+   <div id="person" class="right">
+   </div>
+
+   <div class="data">
+     <nav id="navbar" class="left navbar">
+       <ul>
+         <li><a href="../first.html">Classes</a></li>
+         <li><a href="requests.html">Exam dates</a></li>
+         <li>
+           <ul>
+             <a class="strong" href="requests.html">Requests</a>
+             <li>&emsp;<a href="" onclick="getPending()">Pending</a></li>
+             <li>&emsp;<a href="" onclick="getGranted()">Granted</a></li>
+             <li>&emsp;<a href="" onclick="getDenied()">Denied</a></li>
+          </ul>
+         </li>
+         <li><a href="index.html">Index</a></li>
+         <li><a href="orders.html">Orders</a></li>
+       </ul>
+     </nav>
+
+     <div id="general" class="left general">
      </div>
-   </body>
+   </div>
+
+   <script type="text/javascript" src="../javascript/requests.js"></script>
+   <script type="text/javascript" src="../json/data.js"></script>
+ </body>
 </html>

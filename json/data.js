@@ -71,4 +71,6 @@ var classes = [
 
 var requests = [];
 
+var studentRequests = [];
+
 var orders = [];

@@ -17,14 +17,16 @@
   padding: 0px;
 }
 
-.navbar ul > li {
+.navbar ul li {
   width: 100%;
   text-overflow: ellipsis;
 }
 
-.navbar ul > li  a {
+.navbar a {
   width: 100%;
   text-overflow: ellipsis;
+  text-decoration: none;
+  color: #3d4147;
 }
 
 .general {

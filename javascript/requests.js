@@ -20,7 +20,7 @@ function getNavbar () {
       nav = '<ul>' +
               '<li><a onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
               '<li><a onclick="loadExams()">Exam dates</a></li>' +
-              '<li><a href="student/requests.html">Requests</a></li>' +
+              '<li><a href="student/requests.html?uname=' + user.username + '">Requests</a></li>' +
               '<li><a onclick="loadIndex()">Index</a></li>' +
               '<li><a onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
             '</ul>';
@@ -182,7 +182,7 @@ var getData = function () {
 
   document.getElementById('person').innerHTML = '<p>Hello ' + user.name + '</p>';
   document.getElementById('general').innerHTML = getGeneral();
-  document.getElementById('navbar').innerHTML = getNavbar();
+  // document.getElementById('navbar').innerHTML = getNavbar();
 }
 
 var add = function(what) {
