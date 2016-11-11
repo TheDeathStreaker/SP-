@@ -94,7 +94,7 @@ function getClasses () {
   return cls;
 }
 
-function getGeneral  () {
+function getFirst  () {
   var layout = '';
 
   switch (user.role) {
@@ -177,12 +177,23 @@ function getGeneral  () {
 
 var user;
 
-var getData = function () {
+var getData = function (page) {
   user = JSON.parse(localStorage.getItem('user'));
 
   document.getElementById('person').innerHTML = '<p>Hello ' + user.name + '</p>';
-  document.getElementById('general').innerHTML = getGeneral();
-  document.getElementById('navbar').innerHTML = getNavbar();
+
+  switch (page) {
+    case 'first':
+      document.getElementById('general').innerHTML = getFirst();
+      document.getElementById('navbar').innerHTML = getNavbar();
+    break;
+    case 'requests':
+      document.getElementById('general').innerHTML = getRequests();
+      document.getElementById('navbar').innerHTML = getNavbar();
+    break;
+    default:
+
+  }
 }
 
 var add = function(what) {
