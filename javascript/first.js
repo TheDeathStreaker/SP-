@@ -358,10 +358,6 @@ var submit = function () {
 
 var logout = function () {
   window.localStorage.removeItem('user');
-  var regex = new RegExp(/e-Student\/\S+\/\S+\.html/);
-  if (regex.test(window.location.href)) {
-    window.location.href = '../index.html';
-  } else {
-    window.location.href = 'index.html';
-  }
+
+  window.location.href = '/';
 }
