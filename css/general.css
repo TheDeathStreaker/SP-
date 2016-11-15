@@ -56,3 +56,7 @@ body {
 .strong {
   font-weight: bold;
 }
+
+.error {
+  color: #f44253;
+}

@@ -35,6 +35,35 @@
   overflow: auto;
 }
 
+.general label {
+  float: left;
+  clear: both;
+}
+
+.general #submit {
+  float: left;
+  clear: both;
+  border: none;
+  background: #429bf4;
+  padding: 5.5px 30px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.general form label{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.general form textarea {
+  width: 98%;
+  height: 100px;
+  resize: none;
+}
+
 .general > div:not(:last-child) {
   border-bottom: 1px solid #b0b8c4;
 }
