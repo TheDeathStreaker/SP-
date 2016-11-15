@@ -3,7 +3,7 @@ function getNavbar () {
   switch (user.role) {
     case 'professor':
       nav = '<ul>' +
-              '<li><a href="" onclick="loadClasses()">Classes</a></li>' +
+              '<li><a class="strong" href="first.html">Classes</a></li>' +
               '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
             '</ul>';
     break;
@@ -18,11 +18,11 @@ function getNavbar () {
     break;
     default:
       nav = '<ul>' +
-              '<li><a href="" onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
-              '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
+              '<li><a class="strong" href="first.html">Classes</a></li>' +
+              '<li><a href="student/dates.html")">Exam dates</a></li>' +
               '<li><a href="student/requests.html">Requests</a></li>' +
-              '<li><a href="" onclick="loadIndex()">Index</a></li>' +
-              '<li><a href="" onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
+              '<li><a href="student/index.html">Index</a></li>' +
+              '<li><a href="student/orders.html">Orders</a></li>' +
             '</ul>';
   }
 
@@ -354,4 +354,14 @@ var submit = function () {
   });
   window.localStorage.removeItem('request');
   window.location.href = 'requests.html';
+}
+
+var logout = function () {
+  window.localStorage.removeItem('user');
+  var regex = new RegExp(/e-Student\/\S+\/\S+\.html/);
+  if (regex.test(window.location.href)) {
+    window.location.href = '../index.html';
+  } else {
+    window.location.href = 'index.html';
+  }
 }
