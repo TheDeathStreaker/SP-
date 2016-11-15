@@ -190,12 +190,35 @@ function getStudentRequests () {
     layout += '<div class="student">';
     layout += '<table class="fullWidth">';
     layout += '<tr>';
-    layout += '<th width="20%"><a onclick="loadStudentRequest(' + requests[i].id + ')">' +
+    layout += '<th width="20%"><a href="request.html" onclick="loadStudentRequest(' + requests[i].id + ')">' +
               requests[i].name + '</a></th>';
     layout += '<td width="80%">' + requests[i].shortDescription + '</td>';
     layout += '</tr>';
     layout += '</table>';
     layout += '</div>';
+  }
+
+  return layout;
+}
+
+function loadRequest () {
+  var layout;
+  var requestID = parseInt(window.localStorage.getItem('request'));
+  for (var i = 0; i < requests.length; i++) {
+    if (requests[i].id === requestID) {
+      layout = '<h2>' + requests[i].name + '</h2>';
+      layout += '<p>' + requests[i].description + '</p>';
+      layout += '<form name="requestForm">';
+      layout += '<label>Additional comments:<br /><textarea name="comments" ' +
+                ' placeholder="Write possible additional comment here..."></textarea></label>';
+      layout += '<label>Add files: <small>You can add up to 2 files</small> ' +
+                '<br /><input type="file" name="files" multiple="true"' +
+                ' onchange="checkFiles();"></input></label>';
+      layout += '<a id="submit" class="submit" onclick="submit()">Submit</a>';
+      layout += '</form>';
+
+      break;
+    }
   }
 
   return layout;
@@ -222,6 +245,9 @@ var getData = function (page) {
           document.getElementById('general').innerHTML = getStudentRequests();
       }
     break;
+    case 'request':
+      document.getElementById('general').innerHTML = loadRequest();
+      break;
     default:
       document.getElementById('general').innerHTML = getFirst();
       document.getElementById('navbar').innerHTML = getNavbar();
@@ -305,6 +331,27 @@ var add = function(what) {
 }
 
 var loadStudentRequest = function (id) {
-  console.log(window.location);
-  window.location.href = 'request.html';
+  window.localStorage.setItem('request', id);
+}
+
+var checkFiles = function () {
+  if (document.forms['requestForm']['files'].files.length > 2) {
+    alert('Too many files. Please reupload.');
+    document.forms['requestForm']['files'].value = '';
+  }
+}
+
+var submit = function () {
+  var requestID = parseInt(window.localStorage.getItem('request'));
+  var addComments = document.forms['requestForm']['comments'].value;
+  var addFiles = document.forms['requestForm']['files'].files;
+
+  studentRequests.push({
+    'idRequest': requestID,
+    'idStudent': user.id,
+    'comments': addComments,
+    'files': addFiles.length ? addFiles : undefined
+  });
+  window.localStorage.removeItem('request');
+  window.location.href = 'requests.html';
 }
