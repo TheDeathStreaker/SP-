@@ -3,7 +3,7 @@ function getNavbar () {
   switch (user.role) {
     case 'professor':
       nav = '<ul>' +
-              '<li><a href="" onclick="loadClasses()">Classes</a></li>' +
+              '<li><a class="strong" href="first.html">Classes</a></li>' +
               '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
             '</ul>';
     break;
@@ -18,11 +18,11 @@ function getNavbar () {
     break;
     default:
       nav = '<ul>' +
-              '<li><a href="" onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
-              '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
+              '<li><a class="strong" href="first.html">Classes</a></li>' +
+              '<li><a href="student/dates.html")">Exam dates</a></li>' +
               '<li><a href="student/requests.html">Requests</a></li>' +
-              '<li><a href="" onclick="loadIndex()">Index</a></li>' +
-              '<li><a href="" onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
+              '<li><a href="student/index.html">Index</a></li>' +
+              '<li><a href="student/orders.html">Orders</a></li>' +
             '</ul>';
   }
 
