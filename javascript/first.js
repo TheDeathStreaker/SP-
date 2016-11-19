@@ -244,6 +244,9 @@ var getData = function (page) {
     case 'dates':
       document.getElementById('general').innerHTML = loadDates();
       break;
+    case 'change':
+      document.getElementById('navbar').innerHTML = getNavbar();
+    break;
     default:
       document.getElementById('general').innerHTML = getFirst();
       document.getElementById('navbar').innerHTML = getNavbar();
@@ -378,4 +381,26 @@ var logout = function () {
   } else {
     window.location.href = '/';
   }
+}
+
+var changePwd = function () {
+  var password1 = document.forms['changePass']['password1'].value;
+  var password2 = document.forms['changePass']['password2'].value;
+
+  var error = document.getElementsByClassName('error');
+
+  if (password1 === password2) {
+    for (var i = 0; i < users.length; i++) {
+      if (user.id === users[i].id) {
+        users[i].password = password1;
+        error[0].innerHTML = '<p>Password changed successfully.</p>';
+        break;
+      }
+    }
+  } else {
+    error[0].innerHTML = '<p>Passwords do not match.</p>';
+  }
+
+    password1 = document.forms['changePass']['password1'].value = '';
+    password1 = document.forms['changePass']['password2'].value = '';
 }
