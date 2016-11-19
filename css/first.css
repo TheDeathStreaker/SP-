@@ -84,3 +84,39 @@
   width: 100%;
   overflow: auto;
 }
+
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    color: #3d4147;
+    border: none;
+    cursor: pointer;
+    background: white;
+}
+
+.person {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #3d4147;
+    display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.person:hover .dropdown-content {
+    display: block;
+}

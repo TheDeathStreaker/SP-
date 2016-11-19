@@ -100,8 +100,8 @@ function getFirst  () {
   switch (user.role) {
     case 'referat':
       layout = '<div class="referat">';
-      layout += '<h3>Add student</h3>';
-      layout += '<form name="addStudent">';
+      layout += '<h3>Add person</h3>';
+      layout += '<form name="addPerson">';
       layout += '<label>';
       layout += 'First name: ';
       layout += '<input name="firstName" type="text" placeholder="First name" required/>';
@@ -110,22 +110,15 @@ function getFirst  () {
       layout += 'Last Name: ';
       layout += '<input name="lastName" type="text" placeholder="Last name" required/>';
       layout += '</label><div class="spacer"></div>';
-      layout += '<a id="submit" class="submit" onclick="add(\'student\')">Add</a>';
-      layout += '</form>';
-      layout += '</div>';
-
-      layout += '<div class="referat">';
-      layout += '<h3>Add professor</h3>';
-      layout += '<form name="addProfessor">';
       layout += '<label>';
-      layout += 'First name: ';
-      layout += '<input name="firstName" type="text" placeholder="First name" required/>';
+      layout += 'Role: ';
+      layout += '<select name="role">';
+      layout += '<option value="student">Student</option>';
+      layout += '<option value="professor">Professor</option>';
+      layout += '<option value="referat">Referat</option>';
+      layout += '</select>';
       layout += '</label><div class="spacer"></div>';
-      layout += '<label>';
-      layout += 'Last Name: ';
-      layout += '<input name="lastName" type="text" placeholder="Last name" required/>';
-      layout += '</label><div class="spacer"></div>';
-      layout += '<a id="submit" class="submit" onclick="add(\'professor\')">Add</a>';
+      layout += '<a id="submit" class="submit" onclick="add()">Add</a>';
       layout += '</form>';
       layout += '</div>';
 
@@ -140,7 +133,7 @@ function getFirst  () {
       layout += 'Professor: ';
       layout += '<select name="classProfessor">';
       layout += getOptions('professor');
-      layout += '</select>'
+      layout += '</select>';
       layout += '</label><div class="spacer"></div>';
       layout += '<a id="submit" class="submit" onclick="add(\'class\')">Add</a>';
       layout += '</form>';
@@ -229,7 +222,7 @@ var user;
 var getData = function (page) {
   user = JSON.parse(localStorage.getItem('user'));
 
-  document.getElementById('person').innerHTML = '<p>Hello ' + user.name + '</p>';
+  document.getElementById('dropdownmenu').innerHTML = 'Hello ' + user.name;
 
   switch (page) {
     case 'first':
@@ -248,6 +241,9 @@ var getData = function (page) {
     case 'request':
       document.getElementById('general').innerHTML = loadRequest();
       break;
+    case 'dates':
+      document.getElementById('general').innerHTML = loadDates();
+      break;
     default:
       document.getElementById('general').innerHTML = getFirst();
       document.getElementById('navbar').innerHTML = getNavbar();
@@ -255,12 +251,16 @@ var getData = function (page) {
 }
 
 var add = function(what) {
-  var firstName, lastName;
-  switch (what) {
+  var firstName, lastName, role;
+  if (what === undefined) {
+    var firstName = document.forms['addPerson']['firstName'].value;
+    var lastName = document.forms['addPerson']['lastName'].value;
+    var role = document.forms['addPerson']['role'].value;
+  } else {
+    role = what;
+  }
+  switch (role) {
     case 'professor':
-      firstName = document.forms['addProfessor']['firstName'].value;
-      lastName = document.forms['addProfessor']['lastName'].value;
-
       var userID = users.length + 1;
 
       users.push({
@@ -268,36 +268,46 @@ var add = function(what) {
         'name': firstName + ' ' + lastName,
         'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
         'password': lastName.toLowerCase() + '4321',
-        'role': what,
+        'role': role,
         'holding': []
       });
 
       updateOptions({
         'name': firstName + ' ' + lastName,
         'id': userID,
-        'role': what
+        'role': role
       });
 
-      document.forms['addProfessor']['lastName'].value = '';
-      document.forms['addProfessor']['firstName'].value = '';
+      document.forms['addPerson']['firstName'].value = '';
+      document.forms['addPerson']['lastName'].value = '';
     break;
     case 'student':
-    firstName = document.forms['addStudent']['firstName'].value;
-    lastName = document.forms['addStudent']['lastName'].value;
-
     users.push({
       'id': users.length + 1,
       'name': firstName + ' ' + lastName,
       'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
       'password': firstName.toLowerCase() + '1234',
-      'role': what,
+      'role': role,
       'enrolled': [],
       'requests': [],
       'orders': []
     });
 
-    document.forms['addStudent']['lastName'].value = '';
-    document.forms['addStudent']['firstName'].value = '';
+    document.forms['addPerson']['firstName'].value = '';
+    document.forms['addPerson']['lastName'].value = '';
+
+    break;
+    case 'referat':
+      users.push({
+        'id': users.length + 1,
+        'name': firstName + ' ' + lastName,
+        'username': firstName.toLowerCase() + lastName.toLowerCase().substring(0,1),
+        'password': firstName.toLowerCase().substring(0,3) + lastName.toLowerCase().substring(0,4) + '12',
+        'role': role
+      });
+
+      document.forms['addPerson']['firstName'].value = '';
+      document.forms['addPerson']['lastName'].value = '';
     break;
     case 'class':
     firstName = document.forms['addClass']['className'].value;
