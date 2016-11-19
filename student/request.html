@@ -17,9 +17,6 @@
      </h1>
    </header>
 
-   <div id="person" class="right" onclick="logout()">
-   </div>
-
    <div class="data">
      <nav id="navbar" class="left navbar">
        <ul>
@@ -30,6 +27,14 @@
          <li><a href="orders.html">Orders</a></li>
        </ul>
      </nav>
+
+     <div id="person" class="person left">
+       <button id="dropdownmenu" class="dropbtn"></button>
+       <div class="dropdown-content">
+         <a href="../change.html">Change password</a>
+         <a onclick="logout()">Log out</a>
+       </div>
+     </div>
 
      <div id="general" class="left general">
      </div>
