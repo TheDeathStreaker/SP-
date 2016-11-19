@@ -86,31 +86,31 @@
 }
 
 .dropbtn {
-    padding: 16px;
-    font-size: 16px;
-    color: #3d4147;
-    border: none;
-    cursor: pointer;
-    background: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background: #f1f1f1;
+  min-width: 160px;
 }
 
 .person {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
 }
 
 .dropdown-content a {
-    padding: 12px 16px;
-    text-decoration: none;
-    color: #3d4147;
-    display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #3d4147;
+  display: block;
 }
 
 .dropdown-content a:hover {
@@ -118,5 +118,5 @@
 }
 
 .person:hover .dropdown-content {
-    display: block;
+  display: block;
 }
