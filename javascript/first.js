@@ -4,16 +4,16 @@ function getNavbar () {
     case 'professor':
       nav = '<ul>' +
               '<li><a class="strong" href="first.html">Classes</a></li>' +
-              '<li><a href="" onclick="loadExams()">Exam dates</a></li>' +
+              '<li><a href="professor/dates.html">Exam dates</a></li>' +
             '</ul>';
     break;
     case 'referat':
       nav = '<ul>' +
-              '<li><a href="" onclick="loadStudents()">Students</a></li>' +
-              '<li><a href="" onclick="loadProfessors()">Professors</a></li>' +
-              '<li><a href="" onclick="loadClasses(\'' + user.role + '\')">Classes</a></li>' +
-              '<li><a href="" onclick="loadRequests(\'' + user.role + '\')">Requests</a></li>' +
-              '<li><a href="" onclick="loadOrders(\'' + user.role + '\')">Orders</a></li>' +
+              '<li><a href="referat/students.html">Students</a></li>' +
+              '<li><a href="referat/professors.html">Professors</a></li>' +
+              '<li><a href="referat/classes.html">Classes</a></li>' +
+              '<li><a href="referat/requests.html">Requests</a></li>' +
+              '<li><a href="referat/orders.html">Orders</a></li>' +
             '</ul>';
     break;
     default:

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>e-&Scaron;tudent</title>
+    <link href="../images/e.png" rel="shortcut icon" />
+ </head>
+
+ <body onload="getData('orders');">
+   <link rel="stylesheet" href="../css/general.css" />
+   <link rel="stylesheet" href="../css/first.css" />
+
+   <header class="header">
+     <img src="../images/logo.png" alt="Logo e-Študent" />
+     <h1>
+       <span>e-</span>&Scaron;tudent
+     </h1>
+   </header>
+
+   <div class="data">
+     <nav id="navbar" class="left navbar">
+       <ul>
+         <li><a href="referat/students.html">Students</a></li>
+         <li><a href="referat/professors.html">Professors</a></li>
+         <li><a href="referat/classes.html">Classes</a></li>
+         <li><a href="referat/requests.html">Requests</a></li>
+         <li><a class="strong" href="referat/orders.html">Orders</a></li>
+       </ul>
+     </nav>
+
+     <div id="person" class="person left">
+       <button id="dropdownmenu" class="dropbtn"></button>
+       <div class="dropdown-content">
+         <a href="../change.html">Change password</a>
+         <a onclick="logout()">Log out</a>
+       </div>
+     </div>
+
+     <div id="general" class="left general">
+     </div>
+   </div>
+
+   <script type="text/javascript" src="../javascript/first.js"></script>
+   <script type="text/javascript" src="../json/data.js"></script>
+ </body>
+</html>
