@@ -9,9 +9,9 @@ function getNavbar () {
     break;
     case 'referat':
       nav = '<ul>' +
-              '<li><a href="referat/students.html">Students</a></li>' +
-              '<li><a href="referat/professors.html">Professors</a></li>' +
-              '<li><a href="referat/classes.html">Classes</a></li>' +
+              // '<li><a href="referat/students.html">Students</a></li>' +
+              // '<li><a href="referat/professors.html">Professors</a></li>' +
+              // '<li><a href="referat/classes.html">Classes</a></li>' +
               '<li><a href="referat/requests.html">Requests</a></li>' +
               '<li><a href="referat/orders.html">Orders</a></li>' +
             '</ul>';
@@ -345,6 +345,70 @@ function loadProfDates () {
   return layout;
 }
 
+function loadOrdersReferat () {
+  var layout;
+
+  layout = '<div class="referat">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="70%">Order type</th>';
+  layout += '<th width="20%">Amount/Languge</th>';
+  layout += '<th width="10%">Student ID</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < orders.length; i++) {
+    if (orders[i].status === 'pending') {
+      var x = orders[i].language ? orders[i].language : orders[i].amount;
+      layout = '<div class="referat">';
+      layout += '<table class="fullWidth">';
+      layout += '<tr>';
+      layout += '<td width="70%">' + orders[i].type.toCamelCase() + '</td>';
+      layout += '<td width="20%">' + x + '</td>';
+      layout += '<td width="10%">' + orders[i].student + '</td>';
+      layout += '</tr>';
+      layout += '</table>';
+      layout += '</div>';
+    }
+  }
+
+  return layout;
+}
+
+function getRefRequests () {
+  var layout;
+
+  layout = '<div class="referat">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="70%">Request type</th>';
+  layout += '<th width="30%">Student ID</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < studentRequests.length; i++) {
+    if (studentRequests[i].status === 'pending') {
+      layout = '<div class="referat">';
+      layout += '<table class="fullWidth">';
+      layout += '<tr>';
+      for (var j = 0; j < requests.length; j++) {
+        if (requests[j].id === studentRequests[i].idRequest) {
+          layout += '<td width="70%">' + requests[j].name + '</td>';
+          break;
+        }
+      }
+      layout += '<td width="30%">' + studentRequests[i].idStudent + '</td>';
+      layout += '</tr>';
+      layout += '</table>';
+      layout += '</div>';
+    }
+  }
+
+  return layout;
+}
+
 var user;
 
 var getData = function (page) {
@@ -509,8 +573,10 @@ var submit = function () {
     'idRequest': requestID,
     'idStudent': user.id,
     'comments': addComments,
-    'files': addFiles.length ? addFiles : undefined
+    'files': addFiles.length ? addFiles : undefined,
+    'status': 'pending'
   });
+
   window.localStorage.removeItem('request');
   window.location.href = 'requests.html';
 }
@@ -548,8 +614,8 @@ var changePwd = function () {
     error[0].innerHTML = '<p>Passwords do not match.</p>';
   }
 
-    password1 = document.forms['changePass']['password1'].value = '';
-    password1 = document.forms['changePass']['password2'].value = '';
+  document.forms['changePass']['password1'].value = '';
+  document.forms['changePass']['password2'].value = '';
 }
 
 var order = function (type) {
@@ -559,7 +625,8 @@ var order = function (type) {
       orders.push({
         'type': type,
         'language': lang,
-        'student': user.id
+        'student': user.id,
+        'status': 'pending'
       });
     break;
     default:
@@ -567,7 +634,8 @@ var order = function (type) {
       orders.push({
         'type': type,
         'amount': parseInt(amount),
-        'student': user.id
+        'student': user.id,
+        'status': 'pending'
       });
   }
 }
