@@ -245,8 +245,8 @@ function loadIndex () {
   layout = '<div class="student">';
   layout += '<table class="fullWidth">';
   layout += '<tr>';
-  layout += '<th width="90%">Class name</th>';
-  layout += '<th width="10%">Mark</th>';
+  layout += '<th width="80%">Class name</th>';
+  layout += '<th width="20%">Mark</th>';
   layout += '</tr>';
   layout += '</table>';
   layout += '</div>';
@@ -260,7 +260,7 @@ function loadIndex () {
           layout += '<tr>';
           layout += '<td width="80%"><h4>' + classes[j].name + '</h4>';
           layout += '</td>';
-          layout += '<td width="10%"><p>' + user.classes[i].mark + '</p></td>';
+          layout += '<td width="20%"><p>' + user.classes[i].mark + '</p></td>';
           layout += '</td>';
           layout += '</tr>';
           layout += '</table>';
@@ -269,6 +269,45 @@ function loadIndex () {
       }
     }
   }
+
+  return layout;
+}
+
+function loadDates () {
+  var layout;
+
+  layout = '<div class="student">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="80%">Class name</th>';
+  layout += '<th width="20%">Dates</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < user.classes.length; i++) {
+    for (var j = 0; j < classes.length; j++) {
+      if (user.classes[i].id === classes[j].id) {
+        if (!user.classes[i].mark) {
+          layout += '<div class="student">'
+          layout += '<table class="fullWidth">';
+          layout += '<tr>';
+          layout += '<td width="80%"><h4>' + classes[j].name + '</h4>';
+          layout += '</td>';
+          layout += '<td width="20%">';
+          for (var k = 0; k < classes[j].exams.length; k++) {
+            layout += '<p>' + classes[j].exams[k] + '</p>';
+          }
+          layout += '</td>';
+          layout += '</td>';
+          layout += '</tr>';
+          layout += '</table>';
+          layout += '</div>';
+        }
+      }
+    }
+  }
+
   return layout;
 }
 
@@ -302,7 +341,7 @@ var getData = function (page) {
           document.getElementById('general').innerHTML = loadDates();
         break;
         default:
-          document.getElementById('general').innerHTML = loadDates();
+          document.getElementById('general').innerHTML = loadProfDates();
       }
     break;
     case 'change':
