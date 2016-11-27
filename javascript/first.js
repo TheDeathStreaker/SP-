@@ -217,6 +217,61 @@ function loadRequest () {
   return layout;
 }
 
+function loadOrders () {
+  var layout;
+
+  layout = '<div class="student">';
+  layout += '<h4>Physical copy of index</h4>';
+  layout += '<form name="indexForm">';
+  layout += '<input type="radio" name="language" value="en" checked />English' +
+            ' <input type="radio" name="language" value="sl" />Slovene<br />';
+  layout += '<a id="submit" class="submit" onclick="order(\'index\')">Order</a>';
+  layout += '</form>';
+  layout += '</div>';
+  layout += '<div class="student">';
+  layout += '<h4>Confirmation of signing in</h4>';
+  layout += '<form name="confirmationForm">';
+  layout += '<label>Amount:<br /><input type="number" name="amount" value="2" min="1" max="10" /></label>';
+  layout += '<a id="submit" class="submit" onclick="order(\'confirmation\')">Order</a>';
+  layout += '</form>';
+  layout += '</div>';
+
+  return layout;
+}
+
+function loadIndex () {
+  var layout;
+
+  layout = '<div class="student">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="90%">Class name</th>';
+  layout += '<th width="10%">Mark</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < user.classes.length; i++) {
+    for (var j = 0; j < classes.length; j++) {
+      if (user.classes[i].id === classes[j].id) {
+        if (user.classes[i].mark) {
+          layout += '<div class="student">'
+          layout += '<table class="fullWidth">';
+          layout += '<tr>';
+          layout += '<td width="80%"><h4>' + classes[j].name + '</h4>';
+          layout += '</td>';
+          layout += '<td width="10%"><p>' + user.classes[i].mark + '</p></td>';
+          layout += '</td>';
+          layout += '</tr>';
+          layout += '</table>';
+          layout += '</div>';
+        }
+      }
+    }
+  }
+  return layout;
+}
+
 var user;
 
 var getData = function (page) {
@@ -240,12 +295,30 @@ var getData = function (page) {
     break;
     case 'request':
       document.getElementById('general').innerHTML = loadRequest();
-      break;
+    break;
     case 'dates':
-      document.getElementById('general').innerHTML = loadDates();
-      break;
+      switch (user.role) {
+        case 'student':
+          document.getElementById('general').innerHTML = loadDates();
+        break;
+        default:
+          document.getElementById('general').innerHTML = loadDates();
+      }
+    break;
     case 'change':
       document.getElementById('navbar').innerHTML = getNavbar();
+    break;
+    case 'orders':
+      switch (user.role) {
+        case 'student':
+          document.getElementById('general').innerHTML = loadOrders();
+        break;
+        default:
+          document.getElementById('general').innerHTML = loadOrdersReferat();
+      }
+    break;
+    case 'index':
+      document.getElementById('general').innerHTML = loadIndex();
     break;
     default:
       document.getElementById('general').innerHTML = getFirst();
@@ -404,4 +477,24 @@ var changePwd = function () {
 
     password1 = document.forms['changePass']['password1'].value = '';
     password1 = document.forms['changePass']['password2'].value = '';
+}
+
+var order = function (type) {
+  switch (type) {
+    case 'index':
+      var lang = document.forms['indexForm']['language'].value;
+      orders.push({
+        'type': type,
+        'language': lang,
+        'student': user.id
+      });
+    break;
+    default:
+      var amount = document.forms['confirmationForm']['amount'].value;
+      orders.push({
+        'type': type,
+        'amount': parseInt(amount),
+        'student': user.id
+      });
+  }
 }
