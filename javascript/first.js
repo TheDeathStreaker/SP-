@@ -311,6 +311,40 @@ function loadDates () {
   return layout;
 }
 
+function loadProfDates () {
+  var layout;
+
+  layout = '<div class="professor">';
+  layout += '<table class="fullWidth">';
+  layout += '<tr>';
+  layout += '<th width="80%">Class name</th>';
+  layout += '<th width="20%">Exam dates</th>';
+  layout += '</tr>';
+  layout += '</table>';
+  layout += '</div>';
+
+  for (var i = 0; i < user.classes.length; i++) {
+    for (var j = 0; j < classes.length; j++) {
+      if (user.classes[i].id === classes[j].id) {
+        layout += '<div class="professor">';
+        layout += '<table class="fullWidth">';
+        layout += '<tr>';
+        layout += '<td width="80%"><h4>' + classes[j].name + '</h4></td>';
+        layout += '<td width="20%">';
+        for (var k = 0; k < classes[j].exams.length; k++){
+          layout += '<p>' + classes[j].exams[k] + '</p>';
+        }
+        layout += '</td>';
+        layout += '</tr>';
+        layout += '</table>';
+        layout += '</div>';
+      }
+    }
+  }
+
+  return layout;
+}
+
 var user;
 
 var getData = function (page) {
@@ -329,7 +363,7 @@ var getData = function (page) {
           document.getElementById('general').innerHTML = getStudentRequests();
         break;
         default:
-          document.getElementById('general').innerHTML = getStudentRequests();
+          document.getElementById('general').innerHTML = getRefRequests();
       }
     break;
     case 'request':
